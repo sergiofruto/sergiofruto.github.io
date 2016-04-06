@@ -2,12 +2,15 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     min-height: 56px;
+    z-index: 2;
 
     // Positioning context for the mobile navigation icon
-    position: relative;
+    //position: relative;
 }
 
 .site-title {
@@ -20,7 +23,8 @@
 
     &,
     &:visited {
-        color: $grey-color-dark;
+        // color: $grey-color-dark;
+        color: #fff;
     }
 }
 
@@ -168,8 +172,45 @@
  * Page content
  */
 .page-content {
-    padding: $spacing-unit 0;
+    //padding: $spacing-unit 0;
 }
+
+.herospace {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: url(../assets/main-bg.jpg) center center no-repeat;
+  background-size: cover;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.slide {
+
+}
+
+.my-name {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  background: rgba(17, 17, 17, 0.82);
+
+  font-size: 5em;
+  font-weight: 100;
+ }
+
+ .my-role {
+   width: 100%;
+   display: block;
+   text-align: center;
+   background: rgb(17, 17, 17);
+   padding: 10px 0;
+   font-weight: 100;
+ }
 
 .page-heading {
     font-size: 20px;
