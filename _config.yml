@@ -10,8 +10,7 @@ title: SF
 email: fruto.sergio@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   What I do? I make websites look and behave nice in every browser and device.
-  I have 3 years of experience in web development, focusing in HTML, CSS and some help of JS, following the modern standards for Responsive Web Design and Mobile First.
-  Google search results) and in your feed.xml site description.
+  I have 4 years of experience in web development, focusing in HTML, CSS and some help of JS, following the modern standards for Responsive Web Design and Mobile First.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://sergiofruto.github.com" # the base hostname & protocol for your site
 twitter_username: sergiofruto
