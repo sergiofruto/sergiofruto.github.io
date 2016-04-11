@@ -9,16 +9,20 @@
 
     <div class="page-content">
         <div class="herospace">
-            <h1 class="my-name">Sergio Fruto</h1>
-            <p class="my-role">
-              Web Developer
-            </p>
+            <div class="herospace-image"></div>
+            <div class="herospace-content">
+              <h1 class="my-name wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1s">Sergio Fruto</h1>
+              <div class="my-role-wrap">
+                <p class="my-role">Web Developer</p>
+              </div>
+            </div>
         </div>
         <!-- {{ content }} -->
     </div>
 
     {% include footer.html %}
 
+    <script type="text/javascript" src="{{'/scripts/wow.min.js' | prepend: site.baseurl }}"></script>
+    <script type="text/javascript" src="{{'/scripts/main.js' | prepend: site.baseurl }}"></script>
   </body>
-
 </html>
