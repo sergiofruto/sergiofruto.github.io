@@ -18,3 +18,5 @@ github_username:  sergiofruto
 
 # Build settings
 markdown: kramdown
+
+include: ['_pages']

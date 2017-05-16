@@ -104,6 +104,10 @@ a {
     }
 }
 
+a.disabled {
+    pointer-events: none;
+    color: gray!important;
+}
 
 
 /**

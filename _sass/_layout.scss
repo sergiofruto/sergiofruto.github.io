@@ -46,7 +46,7 @@
         }
     }
 
-    @include media-query($on-palm) {
+    @include media-query-max($on-palm) {
         position: absolute;
         top: 9px;
         right: $spacing-unit / 2;
@@ -126,7 +126,7 @@
 
 .footer-col {
     float: left;
-    margin-bottom: $spacing-unit / 2;
+    margin-bottom: $spacing-unit / 1;
     padding-left: $spacing-unit / 2;
 }
 
@@ -145,7 +145,7 @@
     width:         calc(45% - (#{$spacing-unit} / 2));
 }
 
-@include media-query($on-laptop) {
+@include media-query-max($on-laptop) {
     .footer-col-1,
     .footer-col-2 {
         width: -webkit-calc(50% - (#{$spacing-unit} / 2));
@@ -158,7 +158,7 @@
     }
 }
 
-@include media-query($on-palm) {
+@include media-query-max($on-palm) {
     .footer-col {
         float: none;
         width: -webkit-calc(100% - (#{$spacing-unit} / 2));
@@ -171,8 +171,33 @@
 /**
  * Page content
  */
+
+ section {
+   position: relative;
+   display: block;
+   width: 100%;
+ }
+
+.page-wrapper {
+  min-height: 100%;
+  background-color: #fff;
+
+  .post-title {
+    width: 118%;
+    background-color: #111111;
+    padding: 35px;
+    margin-left: -9%;
+    margin-right: -9px;
+    padding-left: 9%;
+  }
+}
+
 .page-content {
-    //padding: $spacing-unit 0;
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 56px);
+  padding-top: 56px;
 }
 
 .herospace {
@@ -183,8 +208,76 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+
+}
+.subheader {
+  width: 100%;
+  background-color: #000;
 }
 
+.post {
+  width: 100%;
+}
+
+.work-list-wrapper {
+  padding-top: 30px;
+}
+
+.work-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  @include media-query($desktop) {
+    flex-direction: row;
+  }
+}
+
+.work-item  {
+  flex: 1 0 33.33%;
+  color: #111111;
+  padding: 0 1%;
+  margin-bottom: 25px;
+  box-sizing: border-box;
+
+  a {
+    color: #0a84ae;
+    &:hover,
+    &:active {
+      column-rule: #053b4e;
+    }
+
+    &:visited {
+      color: darken(#0a84ae, 15%);
+    }
+  }
+}
+
+.work-item-image {
+  height: 205px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.work-item-title  {
+  color: white;
+  padding: 10px;
+  margin: 0;
+  font-family: $alt-font-family;
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: #1d1d1d;
+}
+
+.work-item-link {
+  display: block;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: $alt-font-family;
+  background-color: #f8f8f8;
+}
 .herospace-image {
   position: absolute;
   top: 0;
@@ -213,10 +306,14 @@
 .my-name {
   width: 100%;
   margin: 0;
-  font-size: 5em;
+  font-size: 2.6em;
   font-weight: 100;
   text-align: center;
- }
+
+  @include media-query($desktop) {
+    font-size: 5em;
+  }
+}
 
 .my-role-wrap {
     animation: entrance .8s cubic-bezier(.64,.05,.35,1) 2.3s forwards;
