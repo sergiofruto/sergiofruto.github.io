@@ -5,16 +5,19 @@
 
   <body>
 
+    {% include navigation.html %}
+
     {% include header.html %}
 
     <div class="page-content">
-      <div class="herospace-image"></div>
       {{ content }}
     </div>
 
     {% include footer.html %}
 
-    <script type="text/javascript" src="{{'/scripts/wow.min.js' | prepend: site.baseurl }}"></script>
+    <script type="text/javascript" src="{{'/scripts/jquery.js' | prepend: site.baseurl }}"></script>
+    <script type="text/javascript" src="{{'/scripts/bootstrap.min.js' | prepend: site.baseurl }}"></script>
     <script type="text/javascript" src="{{'/scripts/main.js' | prepend: site.baseurl }}"></script>
+
   </body>
 </html>
