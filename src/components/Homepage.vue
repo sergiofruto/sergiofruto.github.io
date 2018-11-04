@@ -7,6 +7,12 @@
         <p>I'm a web developer located in BA, currently working for Auth0.</p>
         <p>I make websites look good and behave nice in every browser and device.</p>
         <p>I have 6 years of experience in web development, focusing in HTML, CSS and some help of JS, following the modern standards for Responsive Web Design and Mobile First.</p>
+        <button
+          v-bind:style="{ color: white, border: `1px solid ${currentColor}`}"
+          v-on:click="updateColor"
+        >
+          update color!
+        </button>
       </div>
       <SideBar/>
     </div>
@@ -20,16 +26,42 @@ import SideBar from './SideBar'
 export default {
   name: 'Homepage',
   components: {
-    SideBar
+    SideBar,
   },
   data() {
     return {
       currentColor: '#11cbdc',
-      yellowColor: '#FDB52B',
-      redColor: '#E0292D'
     };
   },
+  methods: {
+    updateColor: function () {
+      const blueColor = '#11cbdc';
+      const yellowColor = '#FDB52B';
+      const redColor = '#E0292D';
+      const whiteColor = '#FFFFFF';
+
+      const getColor = Math.floor(Math.random() * 3) + 1;
+      switch (getColor) {
+        case 1:
+          this.currentColor = blueColor;
+          break;
+        case 2:
+          this.currentColor = yellowColor;
+          break;
+        case 3:
+          this.currentColor = redColor;
+          break;
+        default:
+          this.currentColor = redColor;
+      }
+    }
+  },
+  mounted: function () {
+    this.updateColor();
+  },
 };
+
+
 </script>
 
 <style scoped>
@@ -49,6 +81,7 @@ h1 {
   font-size: 3.2rem;
   line-height: 1;
   color: white;
+  transition: all 1s ease;
 }
 
 p {
@@ -65,6 +98,16 @@ span.bar {
   height: 4.5rem;
   background-color: black;
   transition: all 1s ease;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 2.5rem;
+  background: transparent;
+  border-radius: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: white;
 }
 
 span.top-bar {
