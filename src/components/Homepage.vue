@@ -14,7 +14,6 @@
           update color!
         </button>
       </div>
-      <SideBar/>
     </div>
     <span v-bind:style="{ backgroundColor: currentColor }" class="bar bottom-bar"></span>
   </div>
@@ -30,30 +29,21 @@ export default {
   },
   data() {
     return {
+      startingColor: 0,
       currentColor: '#11cbdc',
     };
   },
   methods: {
     updateColor: function () {
-      const blueColor = '#11cbdc';
-      const yellowColor = '#FDB52B';
-      const redColor = '#E0292D';
-      const whiteColor = '#FFFFFF';
-
-      const getColor = Math.floor(Math.random() * 3) + 1;
-      switch (getColor) {
-        case 1:
-          this.currentColor = blueColor;
-          break;
-        case 2:
-          this.currentColor = yellowColor;
-          break;
-        case 3:
-          this.currentColor = redColor;
-          break;
-        default:
-          this.currentColor = redColor;
+      const colors = ['#11cbdc', '#FDB52B', '#E0292D', '#FFFFFF'];
+      if (this.startingColor < 3) {
+        this.startingColor = this.startingColor + 1;
       }
+      else {
+        this.startingColor = 0;
+      }
+
+      this.currentColor = colors[this.startingColor];
     }
   },
   mounted: function () {
@@ -108,7 +98,15 @@ button {
   font-size: 12px;
   text-transform: uppercase;
   color: white;
+  cursor: pointer;
 }
+
+button:focus,
+button:hover,
+button:active {
+  outline: none;
+}
+
 
 span.top-bar {
   top: 0;
