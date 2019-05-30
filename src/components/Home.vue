@@ -34,13 +34,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+* {
+  box-sizing: border-box;
+}
 body {
   display: flex;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(270deg, #00ffbd, #ff00df, #008cff, #fffa00);  background-size: 800% 800%;
   animation: GradientMove 45s ease infinite;
+}
+@media screen and (min-width: 769px) {
+  body {
+    height: 100vh;
+  }
 }
 
 img {
@@ -48,21 +56,23 @@ img {
   margin: 0 auto 18px;
 }
 
-@keyframes GradientMove {
-  0% { background-position:0% 50 }
-  50% { background-position:100% 50% }
-  100% { background-position:0% 50% }
-}
-
 .container {
   background: white;
-  max-width: 63%;
-  margin: 0 auto;
-  padding: 55px 40px;
+  max-width: 90%;
+  margin: 30px auto;
+  padding: 30px 15px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.2);
   color: white;
   line-height: 1.7;
+}
+
+@media screen and (min-width: 769px) {
+  .container {
+    max-width: 63%;
+    margin: 0 auto;
+    padding: 55px 40px;
+  }
 }
 
 h1 {
@@ -100,5 +110,11 @@ li {
 }
 a {
   color: #42b983;
+}
+
+@keyframes GradientMove {
+  0% { background-position:0% 50 }
+  50% { background-position:100% 50% }
+  100% { background-position:0% 50% }
 }
 </style>
