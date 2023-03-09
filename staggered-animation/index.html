@@ -10,13 +10,17 @@
     margin: 0;
   }
 
+  h1 {
+    color: white;
+  }
+
   #tiles {
     width: 100vw;
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
     grid-template-rows: repeat(var(--rows), 1fr);
-    background-color: black;
+    background-color: aquamarine;
   }
 
   .tile {
@@ -26,12 +30,15 @@
   }
 
   .tile:hover {
-    opacity: 0.9;
+    background-color: antiquewhite;
+    opacity: .5;
   }
 
 </style>
 <body>
-  <div id="tiles"></div>
+  <div id="tiles">
+    <h1>Click anywhere! </h1>
+  </div>
   <script src="anime.min.js"></script>
   <script>
     const wrapper = document.getElementById("tiles");
