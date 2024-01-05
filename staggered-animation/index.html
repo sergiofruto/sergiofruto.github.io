@@ -1,100 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Staggered Animated Grid</title>
-</head>
-<style>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Staggered Animated Grid</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+    }
 
-  body {
-    margin: 0;
-  }
+    .title {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Roboto", sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      color: white;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      font-weight: 300;
+    }
 
-  h1 {
-    color: white;
-  }
+    #tiles {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: repeat(var(--columns), 1fr);
+      grid-template-rows: repeat(var(--rows), 1fr);
+      background-color: aquamarine;
+    }
 
-  #tiles {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(var(--columns), 1fr);
-    grid-template-rows: repeat(var(--rows), 1fr);
-    background-color: aquamarine;
-  }
+    .tile {
+      display: inline-block;
+      cursor: pointer;
+      transition: opacity 0.25s ease-in-out;
+    }
 
-  .tile {
-    display: inline-block;
-    cursor: pointer;
-    transition: opacity .25s ease-in-out;
-  }
-
-  .tile:hover {
-    background-color: antiquewhite;
-    opacity: .5;
-  }
-
-</style>
-<body>
-  <div id="tiles"></div>
-  <script src="anime.min.js"></script>
-  <script>
-    const wrapper = document.getElementById("tiles");
-    let columns = Math.floor(document.body.clientWidth / 50);
-    let rows = Math.floor(document.body.clientHeight / 50);
-
-    const colors = [
-      "rgb(247, 37, 133)",
-      "rgb(175, 252, 65)",
-      "rgb(72, 12, 168)",
-      "rgb(63, 55, 201)",
-      "rgb(217, 4, 41)",
-      "rgb(76, 201, 240)"
-    ];
-
-    let count = -1;
-
-    const createTile = index => {
-      const tile = document.createElement("div");
-
-      tile.classList.add("tile");
-      tile.onclick = e => handleOnClick(index);
-      return tile;
-    };
-
-    const createTiles = quantity => {
-      Array.from(Array(quantity)).map((tile, index) => {
-        wrapper.appendChild(createTile(index));
-      });
-    };
-
-    const createGrid = () => {
-      wrapper.innerHTML = '';
+    .tile:hover {
+      background-color: antiquewhite;
+      opacity: 0.5;
+    }
+  </style>
+  <body>
+    <h1 class="title">Click anyware and see what happens!</h1>
+    <div id="tiles"></div>
+    <script src="anime.min.js"></script>
+    <script>
+      const wrapper = document.getElementById("tiles");
       let columns = Math.floor(document.body.clientWidth / 50);
       let rows = Math.floor(document.body.clientHeight / 50);
 
-      wrapper.style.setProperty("--columns", columns);
-      wrapper.style.setProperty("--rows", rows);
+      const colors = [
+        "rgb(247, 37, 133)",
+        "rgb(175, 252, 65)",
+        "rgb(72, 12, 168)",
+        "rgb(63, 55, 201)",
+        "rgb(217, 4, 41)",
+        "rgb(76, 201, 240)",
+      ];
 
-      createTiles(columns * rows);
-    }
+      let count = -1;
 
-    const handleOnClick = index => {
-      count = count + 1;
-      let randomColor = Math.floor(Math.random() * colors.length);
+      const createTile = (index) => {
+        const tile = document.createElement("div");
 
-      anime({
-        targets: ".tile",
-        backgroundColor: colors[randomColor],
-        delay: anime.stagger(50, {
-          grid: [columns, rows],
-          from: index
-        })
-      });
-    }
+        tile.classList.add("tile");
+        tile.onclick = (e) => handleOnClick(index);
+        return tile;
+      };
 
-    createGrid();
-    window.onresize = () => createGrid();
-  </script>
-</body>
+      const createTiles = (quantity) => {
+        Array.from(Array(quantity)).map((tile, index) => {
+          wrapper.appendChild(createTile(index));
+        });
+      };
+
+      const createGrid = () => {
+        wrapper.innerHTML = "";
+        let columns = Math.floor(document.body.clientWidth / 50);
+        let rows = Math.floor(document.body.clientHeight / 50);
+
+        wrapper.style.setProperty("--columns", columns);
+        wrapper.style.setProperty("--rows", rows);
+
+        createTiles(columns * rows);
+      };
+
+      const handleOnClick = (index) => {
+        count = count + 1;
+        let randomColor = Math.floor(Math.random() * colors.length);
+
+        anime({
+          targets: ".tile",
+          backgroundColor: colors[randomColor],
+          delay: anime.stagger(50, {
+            grid: [columns, rows],
+            from: index,
+          }),
+        });
+      };
+
+      createGrid();
+      window.onresize = () => createGrid();
+    </script>
+  </body>
 </html>
